@@ -1,0 +1,22 @@
+L, hidden units: 10
+SPINS: False
+POTTS: False
+gamma: 0.001
+GRAD: RMSprop
+Nt: 1
+Epochs: 200
+Nmini: 10
+Nini: 5
+Nfin: 325
+epsilon= 0.0001
+D=784	sample size
+L=10	nr. z states
+Gradient descent type: RMSprop
+learning rate        = 0.05 --> 0.05
+gamma=0.001	regularization
+
+-158.2529146876296
+-157.57912973987078
+-160.48094006269335
+-158.20353082814805
+-156.15576783719288

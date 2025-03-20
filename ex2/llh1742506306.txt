@@ -1,0 +1,10 @@
+#L:10
+#SPIN:True
+#POTTS:False
+#gamma:0.01
+#Nt:1
+#Nepoch:200
+#Nmini:10
+#Nini:5
+#Nfin:10
+#Grad:RMSprop
