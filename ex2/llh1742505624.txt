@@ -1,14 +1,5 @@
-#L:10
-#SPIN:False
-#POTTS:True
-#gamma:0.01
-#Nt:1
-#Nepoch:200
-#Nmini:10
-#Nini:5
-#fin:10
-#Grad:RMSprop
-
+#L SPIN POTTS gamma Nt Nepoch Nmini Nini Nfin Grad
+[10, False, True, .01, 1, 200, 10, 5, 10, 'RMSprop']
 -175.73594545902634
 -175.7469522077531
 -174.09121659302124
