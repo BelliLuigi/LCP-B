@@ -1,0 +1,347 @@
+\documentclass[prl,twocolumn]{revtex4-1}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{latexsym,amsmath}
+
+\definecolor{linkcolor}{rgb}{0,0,0.65} %hyperlink
+\usepackage[pdftex,colorlinks=true, pdfstartview=FitV, linkcolor= linkcolor, citecolor= linkcolor, urlcolor= linkcolor, hyperindex=true,hyperfigures=true]{hyperref} %hyperlink%
+
+
+
+\begin{document}
+
+\title{GROUPNAME -- Title of project for the 2024-2025 assignment}
+
+
+
+
+
+\author{James Brown}
+\author{Barry White}
+\author{Simply Red}
+
+\date{\today}
+
+
+\begin{abstract}
+  Here, in the ``abstract'' (more or less of 8 lines), there should be a short summary of the work and of its main findings. In a paper, the abstract is important also for attracting potential readers, hence it is convenient to start it with some catchy statement. ---
+ The rest of this text has the double purpose of (a) providing a template for the assignment latex, and (b) introducing how to structure the backbone of the text and explaining some details of this assignment. The ``zzz'' fill the space to show a typical (but not rigid) extension of the parts.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+\end{abstract}
+
+\maketitle
+
+
+\paragraph{\bf RULES}
+{
+\bf
+\begin{itemize}
+\item Compile the {\tt latex} file (found in the google folder from moodle) with the format of this template,  without changing the parameters (page size etc.).
+\item The text, figures, and references should be of about four pages.
+\item There is a deadline for submission is written in moodle.
+\item Write a statement in which the contribution of each member of the group is specified.
+\end{itemize}
+}
+
+\section{Introduction}
+
+The main purpose of this assignment is to simulate the writing of a short paper, to train the writing skills and the capability to explain a subject with effective simple sentences and a logic chain.
+
+The topic of your assignment is specified at the lesson.
+It requires you to describe your findings in one of the exercises.
+
+In this introduction,
+you should describe the main topic in general terms, introducing what you want to discover, why, and which
+methods you use do perform this study.
+There could also be citations like this \cite{pap1} to papers, websites, etc. forming the list of references that other people could be interested in consulting for a better understanding your points.
+
+\paragraph{\bf Tips}
+\begin{itemize}
+\item In English use sentences shorter than what you might normally be using in Italian, German, etc...
+\item Possibly, Explain concepts at a level which is accessible to everybody.
+\item Do not use colloquial forms in scientific writing, thus avoid it's, aren't, don't, etc.
+\item Do not change the time of verbs; it is simpler to speak in simple present, however also writing always in past tense is fine.
+\item In figures, use fonts that match the \underline{size} of the main text fonts (tiny fonts should be avoided). Use lines with different dashing, color, and symbol as appropriate for better distinguishing the curves. Use log scale when it is better for highlighting smaller scales or flattening larger scales. 
+\item Remember the grid explained in the intro video of the course, which will be used for evaluations. It contains suggestions for improving the text.
+\end{itemize}
+
+
+
+
+\paragraph{\bf Latex --}
+
+A modern online tool to handle and share latex files is {\em Overleaf}. The other option is a standard latex installation on the computer.
+Locally, this text is compiled with the command \texttt{pdflatex} and is based on \texttt{revtex}.
+Packages (of which, maybe not all are needed) in Arch Linux may be installed via\\
+\texttt{
+  sudo pacman -S texlive-core texlive-bibtexextra texlive-fontsextra  texlive-formatsextra texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers  texlive-science}
+
+\vspace{0.2cm}
+In Ubuntu there is a similar installation with \texttt{sudo apt install}, maybe \texttt{sudo apt install texlive-full} if you want to lose less time to pick the right packages. Similar tools should be available in Windows and via e.g.~macports on Mac OS.
+
+%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=0.3\textwidth]{fig1a.png}
+  \hskip 1mm
+  \includegraphics[width=0.3\textwidth]{fig1a.png}
+  \hskip 1mm
+  \includegraphics[width=0.3\textwidth]{fig1a.png}
+  \vskip 1mm
+  \includegraphics[width=0.455\textwidth]{fig1a.png}
+  \hskip 1mm
+  \includegraphics[width=0.455\textwidth]{fig1a.png}
+  \caption{Description of the panels: (a)..... (b)... etc. This caption should give enough info on the content of figures to make them mostly readable without consulting the main text. However, repetitions with the main text should e avoided if possible. {\color{red} If this format is difficult to frame in the page you want, just break it into multiple single figures.}}
+  \label{fig:x}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%
+
+ \section{Methods}
+
+ Here describe which tools you decided to use for solving the problem, with
+ equations
+\begin{equation}
+  A=B
+  \label{eq:simple}
+\end{equation}
+or systems of equations
+\begin{align}
+  \dot v(t) & =  -U'(x)\nonumber \\
+  \dot x(t) & =  v(t)
+  \label{eq:motion}
+\end{align}
+and  eventually with  pieces of code
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+  \includegraphics[width=0.7\columnwidth]{line1.png}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%
+(Jupyter allows saving in latex, it might produce a better output than including a figure with the code as done here).
+
+  As already mentioned, the rest of the text is filled with ``zzz'' to show the typical length of the corresponding sections.
+
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{table}[!b]
+\begin{center}
+\begin{tabular}{lll}
+quantity & symbol & dimensionless \\
+\hline
+time & $t$ & $t'$  \\
+momentum & $p$ & $v$
+\end{tabular}
+\end{center}
+\caption{Description of the table.}
+\label{tab:1}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+ 
+
+
+\section{Results}
+
+
+Describe what you found.
+
+Cite Figure~\ref{fig:x}(a), etc. to add information. Later also cite Figure~\ref{fig:y} and  Figure~\ref{fig:z}. Of course the number and size of figures may vary from project to project.
+
+Cite Table~\ref{tab:1} to collect useful data in a clear way.
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!tb]
+  \includegraphics[width=0.44\textwidth]{fig1a.png}
+  \caption{Description...}
+  \label{fig:y}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  
+%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!tb]
+  \includegraphics[width=0.44\textwidth]{fig1a.png}
+  \caption{Description...}
+  \label{fig:z}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%
+
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  
+
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+\section{Conclusions}
+
+Discuss the key aspects that we can take home from this work.
+
+Check if your text is light, swift, and correct in exposing its passages.
+
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+  
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz
+  zzzzzzzzzzzzzzz zzzzz zzzzzzzzzz zzzzzzz z zzzzzzzzzzz zzzz zzzzzzzzz.
+
+  
+
+
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{pap1}
+  B. Franklin,
+  J. Here There {\bf 10}, 20--40 (1800).
+  
+\bibitem{pap2}
+  A. Einstein,
+  Int. J. There Here {\bf 20}, 125--133 (1910).
+  
+\end{thebibliography}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{description_assignment_LCPB_20-21.pdf}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
