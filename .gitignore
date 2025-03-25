@@ -1,5 +1,9 @@
 ex1-20250225T134427Z-001/
 *.zip
 .*checkpoints/
+<<<<<<< HEAD
 LCP-B/
 *virtual_documents/
+=======
+.virtual_documents/
+>>>>>>> origin/main
