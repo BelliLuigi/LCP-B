@@ -1,8 +1,9 @@
-def plot_weights_bias(wE, bE, epoch, L, 
-                      side=0,cols=0,thr=0,s=1.5, 
-                      title=False, save=True,cmap="bwr"):
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+import numpy as np
+from numpy import exp,sqrt,log,log10,sign,power,cosh,sinh,tanh,floor
 
-    import matplotlib.pyplot as plt
+def plot_weights_bias(wE, bE, epoch, L, side=0,cols=0,thr=0,s=1.5, title=False, save=True,cmap="bwr"):
     '''
     Plot the weights of the RBM, one plot for each hidden unit.
     '''
@@ -50,10 +51,6 @@ def plot_weights_bias(wE, bE, epoch, L,
 
 
 def show_MNIST(x, y=[], z=[], Nex=5, S=1.4, side=0, colors=[], save=False):
-
-    import numpy as np
-    from numpy import exp,sqrt,log,log10,sign,power,cosh,sinh,tanh,floor
-    import matplotlib.pyplot as plt
     """Show digits"""
     if side==0: side = int(sqrt(x.shape[1]))
     if len(y)<1: y=np.full(Nex,"")
@@ -75,7 +72,6 @@ def show_MNIST(x, y=[], z=[], Nex=5, S=1.4, side=0, colors=[], save=False):
     plt.show()
 
 def MNIST_bit(X,side=28,level=0.5,x_min=0):
-    import numpy as np
     NX=len(X)
     print(f"Dataset with {NX} points, each with {len(X[0])} bits\n")
     if side==14:
@@ -87,3 +83,8 @@ def MNIST_bit(X,side=28,level=0.5,x_min=0):
     # binarize data and then convert it to 1/0 or 1/-1
     X = np.where(X/255 > level, 1, x_min)
     return X.astype("int")
+
+
+# Activations
+def relu(x):
+    return np.clip(x, 0, None)
