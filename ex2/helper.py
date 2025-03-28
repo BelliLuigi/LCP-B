@@ -88,3 +88,7 @@ def MNIST_bit(X,side=28,level=0.5,x_min=0):
 # Activations
 def relu(x):
     return np.clip(x, 0, None)
+
+
+
+    
