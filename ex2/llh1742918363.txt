@@ -1,5 +1,0 @@
-#L SPIN POTTS gamma Nt Nepoch Nmini Nini Nfin Grad
-[10, False, True, 0.01, 1, 200, 10, 5, 5, 'RMSprop']
--165.37403064973074
--165.46331207270478
--170.97096290168477
