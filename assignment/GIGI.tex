@@ -25,7 +25,24 @@
 
 \maketitle
 
-\paragraph{\bf Log-likelihood} To solve a problem using Bayesian method, as we do, we have to define
+
+\paragraph{\bf Weights initialization --}
+The main idea behind weights initialization is to help the model to break the symmetry, in fact all weights are initialized to the same value, the hidden units will learn the same feature.
+
+In the RBM we used, the procedure of initialization for the bias $a_i$ of a visible unit $v_i$ is given by the formula $ a_i = \log(\frac{p_i}{1-p_i})$ \cite{HintonPractical}, where $p_i$ is the fraction of training samples in which the unit $i$ is on. 
+When updating the visible states, $p_i$ corresponds to the probability of having a visible state equal to 1, which is used to stochastically pick the value of each visible unit. The probability of activation for a visible neuron is 
+\begin{equation}
+P(x_i=1|h)= \sigma(a_i + \sum_j h_j w_{ij})
+\end{equation}
+where $\sigma(x)$ is a sigmoid function. If we set $w_{ij}\sim 0$, we have $P(x_i=1) \sim \sigma(a_i)$, hence $\sigma(a_i) = p_i$.
+
+The biases are set so that the neurons have on average an activation that matches the distribution of the training data \cite{mehta}. This helps stabilize learning and prevents the model from learning too slowly.
+In a qualitative way, if a pixel is often active in the dataset ($p\sim 1$), the bias will be highly positive, encouraging the neuron to be active. On the contrary, if a pixel is rarely active ($p_i \sim 0$), the bias will be highly negative, discouraging activation. If $p_i = 0.5$, the bias will be zero, meaning the neuron has a neutral activation probability.
+
+In our code, an average on the data is made for each column obtaining the vector of means.
+The vector is then \emph{refined} setting values that are too close to the lower ($-1$ or $0$) and upper (1) state to a higher (first case) or lower value (second case). This is to avoid divergences when computing the logarithms. Finally, the function returns the vector of biases based on the formula above.
+
+\paragraph{\bf Log-likelihood --} To solve a problem using Bayesian method, as we do, we have to define
 \begin{itemize}
 	\item the \emph{likelihood function}, $p\left( X|\theta   \right)$, that describes the probability of observing a dataset $X$ given the value of parameters $\theta $
 	\item the \emph{prior distribution}, $p\left( \theta  \right)$, that describes the \emph{a-priori} knowledge we have about the parameters.
@@ -62,9 +79,37 @@ This is easy to compute and becomes numerically stable limiting the argument to 
 \begin{equation}
 \text{ln}Z = \text{ln}\left[ \sum_{z}^{}{G\left( z \right) \prod_{i=1}^{D} \left( 1+e^{H_{i}\left( z \right)} \right)} \right]	
 \end{equation}
-then we averaged it over $x^{\left( m \right)}$ points of the dataset to get $\mathcal{L}$. This computation of the log-likelihood is used to identify the best models after a random search. The $\mathcal{L}$ behaves well with Bernoulli variables $\{0,1\}$ leading to values that reach $\sim -140$ for our best models.
-    
+for Bernoulli units, while using spin units, {-1,1} 
+\begin{equation}
+	\text{ln}Z = \text{ln}\left[ \sum_{z}^{}{G\left( z \right)\prod_{i=1}^{D}{\left( 1+\text{cosh}\left( H_{i}\left( z \right)\right)\right)}} \right].
+\end{equation}
 
+We then averaged it over $x^{\left( m \right)}$ points of the dataset to get $\mathcal{L}$. This computation of the log-likelihood is used to identify the best models after a random search. The $\mathcal{L}$ behaves well with Bernoulli variables $\{0,1\}$ leading to values that reach $\sim -140$ for our best models.
+    
+\paragraph{\bf Validation --}
+
+We validated the log-likelihood score obtained for each model by setting \emph{N} different random seeds and repeating the training \emph{N}-times, then computing the mean of the log-likelihood score and standard deviation. The goal of this procedure is to account for the stochastic nature of the training process, quantifying its effect on the performance of each model.
+\paragraph{\bf Best model --}
+We implemented a random search to tune the following hyperparameters as showed in table \ref{table:hyperparameters}, we then looked for the best model and started fine tuning a handful of them.
+
+\begin{table}[]
+\label{table:hyperparameters}
+\begin{tabular}{lll}
+\toprule
+Parameter & Searched Interval & Description \\ \hline
+\texttt{L}&$[3,10]$ & Hidden units \\
+\texttt{SPINS}& \emph{boolean}& Ising units  \\
+\texttt{POTTS}& \emph{boolean} & One-hot encoding  \\ 
+\texttt{Gamma}& $\left[10^{-4},0 \right]$ & Regularization \\
+\texttt{Grad} & SGD, RMSprop, Adam & Optimization function\\
+\texttt{Nt} & $[1,15]$& CD steps \\
+\texttt{Nepoch} & $[50,350]$ & Epochs\\
+\texttt{Nmini} & $[10,50]$ & Minibatches per epoch\\
+\texttt{Nini} & $[5,50]$ & Initial minibatch's size\\
+\texttt{Nfin} & $[\texttt{Nini},350]$ & Final minibatch's size\\ \toprule
+\end{tabular}
+\caption{Selected parameters in the random search.}
+\end{table}
 \begin{thebibliography}{99}
 
 \bibitem{baiesi}
@@ -72,8 +117,12 @@ then we averaged it over $x^{\left( m \right)}$ points of the dataset to get $\m
   
 \bibitem{mehta}
   P. Mehta, 
-  M. Bukov, et al. {\bf A high-bias, low-variance introduction to Machine Learning for physicists}, 21 (2018).
-  
+  M. Bukov, et al. {\bf A high-bias, low-variance introduction to Machine Learning for physicists}, (2018).
+
+\bibitem{HintonPractical}
+  G. Hinton, {\bf A Practical Guide to Training Restricted Boltzmann Machines}, (2012)
+
+
 \end{thebibliography}
 
 \clearpage
