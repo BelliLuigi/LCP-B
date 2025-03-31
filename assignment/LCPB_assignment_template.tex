@@ -1,9 +1,7 @@
 \documentclass[prl,twocolumn]{revtex4-1}
-
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{latexsym,amsmath}
-
 \definecolor{linkcolor}{rgb}{0,0,0.65} %hyperlink
 \usepackage[pdftex,colorlinks=true, pdfstartview=FitV, linkcolor= linkcolor, citecolor= linkcolor, urlcolor= linkcolor, hyperindex=true,hyperfigures=true]{hyperref} %hyperlink%
 
@@ -100,27 +98,51 @@ In Ubuntu there is a similar installation with \texttt{sudo apt install}, maybe 
 \end{figure*}
 %%%%%%%%%%%%%%%%%%%
 
- \section{Methods}
-
- Here describe which tools you decided to use for solving the problem, with
- equations
+\section{Methods}
+\paragraph{\bf Log-likelihood} To solve a problem using Bayesian method, as we do, we have to define
+\begin{itemize}
+	\item the \emph{likelihood function}, $p\left( X|\theta   \right)$, that describes the probability of observing a dataset $X$ given the value of parameters $\theta $
+	\item the \emph{prior distribution}, $p\left( \theta  \right)$, that describes the \emph{a-priori} knowledge we have about the parameters.
+\end{itemize}
+These two are used to compute the \emph{posterior distribution}
 \begin{equation}
-  A=B
-  \label{eq:simple}
+p\left( \theta |X  \right) = \frac{p\left( X|\theta  \right)p\left( \theta  \right)}{\int_{}^{}{d\theta^{\prime } p\left( X|\theta ^{\prime } \right)p\left( \theta ^{\prime } \right)}}
 \end{equation}
-or systems of equations
-\begin{align}
-  \dot v(t) & =  -U'(x)\nonumber \\
-  \dot x(t) & =  v(t)
-  \label{eq:motion}
-\end{align}
-and  eventually with  pieces of code
-%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h]
-  \includegraphics[width=0.7\columnwidth]{line1.png}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%
-(Jupyter allows saving in latex, it might produce a better output than including a figure with the code as done here).
+that describes the knowledge we have  about parameters $\theta $ after observing the data $X$. As we will see the denominator of the posterior distribution in may cases is not possible to compute analytically. Markov Chain Monte Carlo methods are required to draw random samples of $p\left( \theta |X \right)$.
+The likelihood function is determined by the model and the measurement noise. Many generative models follows a \emph{Maximum Likelihood Estimation} (MLE). In MLE parameters $\hat{\theta }$ that maximize the likelihood of generating observed data are chosen. Equivalently, the log-likelihood since log is monotonic.
+\begin{equation}
+\hat{\theta } = \text{ arg }_{\theta } \text{ max log }p\left( X|\theta  \right)
+\end{equation}
+The most common approach used for training a generative model is to maximize the log-likelihood of the training dataset. By choosing the negative log-likelihood as the cost function, the learning procedure tries to find parameters that maximize the probability of the data.
+The log-likelihood $\ell_{\theta }\left( x \right)$ per data point \emph{x}, averaged over \emph{M} data points, gives the log-likelihood of data
+\begin{equation}
+\mathcal{L} = \frac{1}{M} \sum_{m\leq M}^{}{\ell_{\theta }\left( x^{\left( m \right)} \right)}
+\end{equation}
+In the case of RBMs, we have
+\begin{equation}
+\ell_{\theta }\left( x \right) = \text{ln} \sum_{z}^{}{e^{-E\left( x,z \right)}} -\text{ln}\sum_{x^{\prime }}^{}{\sum_{z}^{}{e^{-E\left( x^{\prime},z \right)}}}
+\end{equation}
+where the second therm is the partition function \emph{Z}. The hard part resides in summing up the Boltmann weights of all possible configurations in \emph{Z}, with \emph{D} visible units and \emph{L} hidden units, there are $2^{D+L}$ possible configurations. We followed instead the procedure suggested by Baiesi \textbf{CITA}, that takes advantage of the energy function.
+\begin{gather}
+H_{i}\left( z \right) = a_{i}+ \sum_{\mu }^{}{w_{i\mu }z_{\mu }} \\
+E\left( x,z \right) = - \sum_{i}^{}{H_{i}\left( z \right)x_{i}}-\sum_{\mu }^{}{b_{\mu }z_{\mu }}\\
+e^{-E\left( x,z \right)} = \prod_\mu  e^{b_{\mu }z_{\mu }}\prod_{i}e^{H_{i}\left( z \right)x_{i}}\label{eq:BoltzmannWeight}
+\end{gather}
+in eq. \ref{eq:BoltzmannWeight} the first factor is defined as $G\left( z \right)$. With this we can reach a reduced partition function $Z\left( z \right)$ defined as
+\begin{equation}
+Z\left( z \right) = G\left( z \right) \prod_{i}\left( 1+e^{H_{i}\left( z \right)} \right)
+\end{equation}
+This is easy to compute and becomes numerically stable limiting the argument to avoid overflow. Since we used low value of \emph{L} in our RBM we can compute the partition function at the start of the training
+\begin{equation}
+\text{ln}Z = \text{ln}\left[ \sum_{z}^{}{G\left( z \right) \prod_{i=1}^{D} \left( 1+e^{H_{i}\left( z \right)} \right)} \right]	
+\end{equation}
+then we averaged it over $x^{\left( m \right)}$ points of the dataset to get $\mathcal{L}$. This computation of the log-likelihood behaves well with Bernoulli variables $\{0,1\}$ leading to values that reach $\sim -140$ for our best models.
+
+
+
+
+
+ (Jupyter allows saving in latex, it might produce a better output than including a figure with the code as done here).
 
   As already mentioned, the rest of the text is filled with ``zzz'' to show the typical length of the corresponding sections.
 
